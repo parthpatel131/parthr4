@@ -468,20 +468,6 @@ with tab3:
         comparison_df = pd.DataFrame(comparison_data)
         st.dataframe(comparison_df, use_container_width=True)
         
-        # Bar chart comparison
-        fig_bar = go.Figure()
-        
-        metrics = ['Voltage (V)', 'Current (A)', 'Temperature (°C)', 'Capacity (%)']
-        selected_metric = st.selectbox("Select metric for comparison", metrics)
-        
-        colors = [st.session_state.cells[i]['color'] for i in range(len(st.session_state.cells))]
-        
-        fig_bar.add_trace(go.Bar(
-            x=comparison_df['Cell ID'],
-            y=comparison_df[selected_metric],
-            marker_color=colors,
-            name=selected_metric
-        ))
         
         fig_bar.update_layout(
             title=f"Cell {selected_metric} Comparison",
